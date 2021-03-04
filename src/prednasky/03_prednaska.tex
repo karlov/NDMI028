@@ -1,0 +1,90 @@
+\section{\texorpdfstring{Sudo-sudomesta, Prostor cyklu grafu}{Sudo-sudomesta, Prostor cyklu grafu}}
+\vspace{5mm}
+\large
+
+\begin{theorem}[Sudo-sudomesta]
+	Nechť $A_1, ... , A_k$ jsou různé $ \subseteq [n]$, $ |A_i| = 0 \mod2 \ \forall i, |A_i \cap A_j| \equiv 0 \mod2, i \ne j \Rightarrow k \leq 2^{\lfloor \frac{n}{2} \rfloor }$
+\end{theorem}
+\begin{proof}
+	Uděláme bijekci množina $\to$ charakteristicky vektor. Pak lin kombinace je taky sudo-sudomesto. Dal
+	\[ \langle A_i, A_j \rangle = \sum_{x \in X} (A_i)_x (A_j)_x = \sum_{x \in A_i \cap A_j} 1 = |A_i \cap A_j| \mod2 \]
+	\[ \langle A_i, A_i \rangle = |A_i| \]
+	Pak $ \langle A_i, A_j \rangle = 0 \mod2 $. Vezmeme $ m = \sum b_iA_i $, tak
+	\[ \langle A_i, m \rangle = \langle A_i, \sum b_iA_i \rangle = \sum b_i \langle A_i, A_j \rangle = 0 \]
+	\[ \langle m,m \rangle = \langle \sum b_iA_i, m \rangle = \sum b_i \langle A_i, m \rangle = 0 \]
+
+	Z toho maximální (vzhledem k inkluzi) systém tvořící sudo-sudomesto je nutně podprostor.
+	\[ \forall x \in M \forall y \in M \langle x, y \rangle = 0 \Rightarrow \forall x \in M: x \in M^{\perp} \Rightarrow M \subseteq M^{\perp} \]
+	\[ \langle M \rangle \subseteq M^{\perp} \Rightarrow dim M \leq dim M^{\perp} = n - dim M \Rightarrow dim \langle M \rangle \leq \lfloor n/2 \rfloor \Rightarrow dim M \leq \lfloor n/2 \rfloor \]
+
+	Odhad je těsný: spojíme body do 2-jic tvořící rozklad X. Pak množiny budou všechny možné podmnožiny obsahující 2ce. Je jich $ 2^{\lfloor n/2 \rfloor} $
+\end{proof}
+
+
+\begin{definition}
+Uvažme bijekci mezi napnutým podgrafem $H$ a jého charakteristickým vektorem. Množina všech napnutých podgrafu $\nu_G$ tvoří V.P. nad $\Z_2$, sčítaní vektoru odpovídá symetrické diferenci množiny hran.
+\end{definition}
+\begin{definition}
+	Množina napnutých podgrafu je Eulerovská pokud $\forall u \in V, deg(u) = 0 \mod2$. Značíme $\xi_G$. Pak $\beta_G$ je množina elementárních řezu, t.j. $B_A = (V, \{xy: x \in A, y\in V\setminus A, xy\in E\}), A \subseteq V$.
+\end{definition}
+
+\begin{theorem}[Eulerovske grafy]
+	$\xi_G, \beta_G$ jsou V.P. podprostory $\nu_G$.
+	Platí $\xi_G^{\perp} = \beta_G \land \beta_G^{\perp} = \xi_G$.
+	Pokud navíc je graf souvislý, $dim(\beta_G) = |V| - 1 \land dim(\xi_G) = |E| - |V| + 1$.
+\end{theorem}
+\begin{proof}
+	1) Násobení skalárem je automaticky splněno, protože těleso je $\Z_2$.
+
+	2) $H_1 + H_2 = (V_1, E(H_1) \div E(H_2))$. Taky patří do V.P.
+
+	3) Ukážeme $\forall H_1, H_2 \in \xi_G: H_1 + H_2 \in \xi_G$.
+	Zvolme vrchol u, nechť $deg_{H_1} u = 2k, deg_{H_2} u = 2l$, taky $h$ je počet společných hran obou podgrafu.
+	\[ deg_{H_1 + H_2} u = 2k - h + 2l - h = 2k + 2l - 2h \equiv 0 \mod2 \]
+	Součet 2 Eulerovských grafu je Eulerovsky graf.
+
+	4) Ukážeme $\forall A,Z \subseteq V(G): B_A + B_Z \in \beta_G$.
+
+	\includegraphics[scale=0.4]{el_rezy.eps}
+
+	Z obrázku přežijou pouze hrany vědoucí z $A - Z$ do $V - (Z\cup A)$, hrany z $A - Z$ do $Z \cap A$, hrany $(Z \cap A)$ do $Z - A$ a hrany ze $Z - A$ do $V - (Z\cup A)$.
+	Ostatní byly ve 2 řezích. Zůstane rez $B_{A \div Z}, A \div Z = (A - Z) \cup (Z - A)$.
+	\[ B_A + B_Z = B_{A \div Z}\]
+
+	Tvrdíme ze $B_G = \langle B_{\{u\}}, u \in V \rangle$.
+	Prostor elementárních řezu je generovaný hvězdami. Protože
+	\[ B_A = \sum_{u \in A} B_{\{u\}} \]
+	Hrany uvnitř A se smažou symetrickou diferenci, hrany vědoucí ven z A, které nejsou společné zůstanou.
+
+	5) $G$ souvislý $\Rightarrow dim B_G = |V| - 1$. Náhledneme ze sečtení všech hvězd dává $\emptyset$ graf.
+	Neboli každá hrana patří ke 2 hvězdám.
+
+	Zafixujeme vrchol u, sečteme hvězdy kromě u. $ \sum_{a \ne u} B_{\{a\}} = \emptyset - B_{\{u\}} = B_{\{u\}} \ne \emptyset $
+	Pokud vezmeme všechny kromě 1 hvězdy, tak jsou LN a generuji všechny řezy. Z toho $\Rightarrow dim B_G = |V| - 1$.
+
+	Pozorovaní:
+	\[ \forall H \subseteq V: H \in \xi_G \iff \langle H, B_A \rangle = 0 \ \forall B_A \in B_G \iff \langle H, B_{\{u\}} \rangle = 0 \ \forall u \in V \]
+	Uvažme hvězdu $B_{\{u\}}$ a $deg_H u = 0 \mod2$. Pak symetrická diference smaže přávě sudy počet hran z hvězdy a nově počet hran je taky sudy.
+	\[ \forall u \in V: \langle H, B_{\{u\}} \rangle = 0 \iff deg_H u \equiv 0 \mod2 \]
+		Pak $ \forall H \subseteq V: H \in \xi_G \iff H \in \beta_G^{\perp} \Rightarrow \xi_G^{\perp} = (\beta_G^{\perp})^{\perp} = \beta_G \Rightarrow dim(\xi_G) = |E| - |V| + 1 $
+
+\end{proof}
+\begin{lemma}
+	$M \subseteq \Z_2^n : \bar{1} \in \langle M \rangle + M^{\perp}$.
+\end{lemma}
+\begin{proof}
+	$\forall x \in M \cup M^{\perp}: \langle x, x \rangle = 0$. Nad $\Z_2$ ale $\langle x, x \rangle = \langle x, \bar{1} \rangle$. Pak
+	\[ x \perp \bar{1} \Rightarrow \bar{1} \in (M \cap M^{\perp})^{\perp} = M^{\perp} + (M^{\perp})^{\perp} = M^{\perp} + M \]
+\end{proof}
+
+\begin{theorem}[Rozklad na 2 Eulerovske podgrafy]
+	$\forall G \exists V_1 \mathbin{\dot{\cup}} V_2 = V(G), G[V_i]$ je Eulerovsky.
+\end{theorem}
+\begin{proof}
+	Uvažme $M = \xi_G$ v tvrzeni z lemmatu. $\bar{1} = G$, má všechny hrany $\Rightarrow \bar{1} \in \xi_G + \xi_G^{\perp} = \xi_G + \beta_G$.
+
+	\[ \forall G: \exists A \subseteq V(G), \exists H\in \xi_G: G = H + B_A \]
+
+	Tento rozklad je dizjunktní, takže máme 2 Eulerovské podgrafy a mezi nimi elementární rez. Pokud rez smažeme, graf je sjednoceni dvou Eulerovských podgrafu.
+
+\end{proof}

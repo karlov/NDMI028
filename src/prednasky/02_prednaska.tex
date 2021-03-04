@@ -1,0 +1,104 @@
+\section{\texorpdfstring{Sudo-lichomesta, 2-vzdálenost množin bodu}{Sudo-lichomesta, 2-vzdálenost množin bodu}}
+\vspace{5mm}
+\large
+
+
+\begin{lemma}\label{mult}
+	$det(S_1 + b_1, S_2 + b_2 , ... , S_k + b_k) = det(S + B), S_i, b_i \in T^k$ kde $S_i,b_i$ jsou sloupce matic $S, B$, jde spočítat jako:
+	\[ det(S_1 + b_1, S_2 + b_2 , ... , S_k + b_k) = det(S_1, S_2 + b_2 , ... , S_K + b_K) + det(b_1, S_2 + b_2 , ... , S_K + b_K) \]
+	Pak linearita v 2. složce atd.
+	\[ det(S + B) = \sum_{w \subseteq [k]} det(S^wT) \]
+	kde $S^w$ znamená, ze jsme vzali sloupce odpovídající indexům v $w$. Ostatní sloupce jsou z T.
+\end{lemma}
+
+
+\begin{theorem}[skoro dizjunktni systémy množin]
+	Nechť $A_1, ... , A_k$ jsou různé $ \subseteq [n]$, $ |A_i \cap A_j| = 1, i \ne j \Rightarrow k \leq n$
+\end{theorem}
+\begin{proof}
+	Nechť A-matice incidence $\{A_i\}$. Radek odpovídá prvkům, sloupec - množinám. Na pozice $(r,s) = 1 \Rightarrow$ prvek $r$ leží v množině $A_s$.
+
+	Vezmeme $A^T * A$ nad $\Real$. Pak ve výsledné matice na pozice $(r,s)$ je $|A_r \cap A_s|$. Jelikož průniky jsou 1-prvkové, máme matici 1-cek. Na diagonále jsou $|A_i|$ velikosti množin.
+
+	\[ k = rank(A^TA) \leq rank A \leq n \Rightarrow k \leq n \]
+
+	Tvrdíme, ze $det(A^TA \ne 0)$. Pak matice je regulární a $rank = k$.
+
+	BUNO
+	\[|A_i| = a_i, a_1 \leq a_2 \leq ... \leq a_k\]
+	Máme matici, kde na diagonále jsou velikosti množin, jinak 1.
+
+	Nahledneme $a_2 \geq 2$. Jinak pokud $a_1 = a_2 \Rightarrow \exists x \in A_1 \cap A_2 \Rightarrow A_1 = A_2 = \{ x \} $.
+
+	Nechť $J$ je matice jedniček. Matici A můžeme napsat jako $J + I*(a_i - 1)$ kde $(a_i - 1)$ je na diagonále.
+	Použijeme vlastnost det jako multilineární formy, viz lemma \cref{mult}. Pokud vezmeme 2 sloupce z $J$, tak det bude 0. Takže zbývají det kde je jeden sloupec z $S$, zbytek z $J$.
+
+	\[ det(S + J) = det(S) + \sum_i^k det(J^iS) = \]
+	Determinanty matic $J^iS$ kde z $J$ je pouze i-ty sloupec lze spočítat rozvojem dle i-ho řádku kde je pouze 1 jednička.
+	\[ = \prod_1^k (a_i - 1) + \prod_2^k (a_i - 1) + \sum_{j=2}^k \frac{\prod_1^k (a_i - 1)}{a_j - 2} \]
+	Kde 2. produkt máme protože $a_1$ se může rovnat 1, zbytek jsou větší. První $\prod$ je $\geq 0$, druhy $\prod > 0$ protože od $i = 2, a_i \geq 2$. $\sum$ je zlomek kladných clenu, takže $\sum \geq 0$. Dohromady $ det(J + S) > 0$
+
+\end{proof}
+
+\begin{theorem}[sudo-lichomesta]
+	Nechť $A_1, ... , A_k$ jsou různé $ \subseteq [n]$, $ |A_i| = 1 \mod2 \ \forall i, |A_i \cap A_j| \equiv 0 \mod2, i \ne j \Rightarrow k \leq n$
+\end{theorem}
+\begin{proof}
+	Vezmeme matice incidence jako v předchozí větě. Uvažme matici $A^T * A$ nad $\Z_2$. Pak na diagonále jsou mohutnosti množin $ = 1 \mod2$, mimo diagonálu průniky $= 0 \mod2$. Neboli $A^T * A = I \Rightarrow rank = k$. Pak jako minule:
+
+	\[ k = rank(A^TA) \leq rank A \leq n \Rightarrow k \leq n \]
+\end{proof}
+
+\begin{definition}
+Množina bodu v $\Real^n$ je s-vzdálenostní pokud vzájemně vzdálenostní bodu nabývají celkem nejvýše s hodnot.
+\end{definition}
+
+\begin{observation}
+	1-vzdálenostní množiny jsou simplexy. Zobecnění rovnostranného $\triangle$ do vyšších dimenzi. Indukci dokážeme, ze $m_1(n) = n + 1$. Při přechodu do vyšší dimenze existuje pravě jeden bod který můžeme použit. Proces podobny kompaktizace topologického prostoru.
+\end{observation}
+
+\begin{theorem}[2-vzdálenostni množ]
+Nechť $m_s(n)$ značí počet bodu s-vzdálenostní množ v $\Real^n$, pak:
+\[ \binom{n+1}{2} \leq m_2(n) \leq 1/2 * (n+1)(n+4) \]
+\end{theorem}
+\begin{proof}
+	1) Dolní odhad
+
+	Vezmeme vektory, které mají pravě 2 jedničky, jinak 0. Takových máme $\binom{n}{2}$.
+
+	Pokud 2 vektoru mají 1 společnou pozice, $d(x,y) = \sqrt{2}$. Jinak pokud mají 2 společné pozice, tak $d(x,y) = 2$. Vzdálenost počítáme jako kanonickou Euklidovou normu.
+	\[ m_2(n) \geq \binom{n}{2} \]
+	Zesílíme dolní odhad: přemístíme se do $\Real^{n+1}$. Jelikož $ \sum_i^{n+1} x_i = 2 $, body jsou v nadrovině dimenzi $\Real^n$ kterou lze vnořit do $\Real^n$. Pak:
+	\[ m_2(n) \geq \binom{n + 1}{2} \]
+
+	2) Horní odhad
+
+	Máme body $A_1, A_2, ..., A_t$. $A_i = (a_{i,1}, a_{i,2}, ..., a_{i,n}) \in \Real^n$. Označme vzdálenosti $k \ne m \in \Real$.
+
+	Definujme funkce $F : \Real^n \times \Real^n \to R, F(x,y) = (d(x,y)^2 - m^2) * (d(x,y)^2 - k^2)$. Pokud je vzdálenost $m \lor k \Rightarrow F = 0$.
+
+	Pak $f_i(x) = F(x, A_i).$ Částečné dosazeni. Tyto funkce jsou v V.P. funkci z $\Real^n$. Tvrdíme ze $\{ f_i(x)\}$ jsou LN.
+	Pokud dosadíme 2 různé prvky do $f_i$ tak dostaneme 0 dle definice zobrazeni F. Pro stejný bod $f_i = a^2b^2 \ne 0$.
+
+	\[ \sum_1^t f_i * x_i = 0, x_i \in R, 0 = nulová \, funkce \]
+	Podíváme se na tuto funkce (lineární kombinace funkci) v nějakém bode $A_j$.
+	\[ \forall j (\sum_1^t x_i * f_i)(A_j) = \sum_1^t x_i * f_i(A_j) = x_j a^2 b^2 = 0 \Rightarrow x_j = 0 \]
+	Neboli funkce jsou LN. Jejich počet je omezen podprostorem funkci nad $\Real^n$ ve kterém žijou.
+
+	\[ f_i(x) = (d(x,A_i)^2 - m^2) * (d(x,A_i)^2 - k^2) = (\sum_j^t(x_j - a_{i,j})^2 - m^2)*(\sum_j^t(x_j - a_{i,j})^2 - k^2)\]
+
+	$f_i$ jsou polynomu stupně 4. \# polynomu dle dimenze:
+	\begin{enumerate}
+		\setcounter{enumii}{-1}
+		\item k = 0 konstantní $ = 1$.
+		\item k = 1 je $n$.
+		\item k = 2 je $\binom{n}{2}$ pro různá $x_i, x_j$ a $n$ pro $x_i^2$.
+		\item k = 3 $\binom{n}{3}$ pro různá $x_i, x_j, x_k$. Pro $x_i^2x_j = n(n-1)$ a $n$ pro $x_i^2$.
+		\item k = 4 podobně
+		\end{enumerate}
+		Funkce $f_i$ jsou z podprostoru polynomu $deg = 4$. Zvolme vhodnou bázi.
+	\[ U = \langle 1, x_i, x_i*x_j, x_i^2, (\sum x_j^2)x_i, (\sum x_j^2)^2 \rangle \forall i,j \]
+
+	Dostaneme $dim(U) = 1 + n (lin) + n (kv) + n (kv * lin) + \binom{n}{2} (lin 2) + 1 = 2 + 3n + 1/2 n (n-1) = 1/2 (4 + 5 + n^2)$. Generátor $\sum x_j^2$ nepotřebujeme protože je lin kombinaci $x_j^2$.
+
+\end{proof}

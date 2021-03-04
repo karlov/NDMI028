@@ -1,0 +1,155 @@
+\section{\texorpdfstring{Shannonova kapacita}{Shannonova kapacita}}
+\vspace{5mm}
+\large
+
+\begin{definition}
+Nechť A je abeceda, $A = \{a, e, o, h, g\}$.
+Pak sestavíme graf $G_A = (A, \{xy | x \sim y \})$. Kde ekvivalence znamená, že $x$ je snadno zamění za $y$.
+\end{definition}
+Pak by šlo vzít nezávislou množinu a používat jen tyto symboly. Zbylo by hodně málo symbolu.
+
+Lepe - dohodneme se na pevné délce. Vezmeme $C \subseteq A^n$. Pak bezpečný kod bude používat pouze slova z $C$.
+Dal sestavíme $G_{A^n}$ graf zaměnitelnosti pro $A^n$.
+
+\begin{observation}
+	2 slova jsou zaměnitelná $\iff$ mají na i-te pozice stejné písmeno nebo zaměnitelné. Přesné odpovídá uplnému součinu grafu.
+\end{observation}
+
+\begin{definition}
+	Pro grafy $G, H$ definujme uplný součin grafu jako graf
+\[ G \boxtimes H = (V(G) \times V(H), \{(a, b)(x, y): (a = x \lor ax \in E(G)) \land (b = y \lor by \in E(H))\}) \]
+Kde vrcholy $a,x$ jsou z grafu $G$, $b,y$ z grafu $H$.
+
+	Taky definujme $G^n = G \boxtimes G \boxtimes ... \boxtimes G$.
+\end{definition}
+\begin{definition}
+	Shannonova kapacita grafu $G$:
+	\[ \Theta(G) = \sup_k \sqrt[k]{\alpha(G^k)}, \forall k \]
+\end{definition}
+\begin{observation}
+	\[\forall G \Theta(G) \geq \alpha(G)\]
+
+	Pokud v grafu je nezávislá množina $B \subseteq V(G), |B| = \alpha(G)$. Pak $B^k$ je taky nezávislá množina.
+	Z toho
+	\[ \sqrt[k]{\alpha(G^k)} \geq \sqrt[k]{\alpha(B^k)} = \sqrt[k]{\alpha^k(G)} = \alpha(G) \]
+\end{observation}
+\begin{observation}
+	Nechť $\sigma(G) = \chi(-G)$. Což je minimální počet uplných podgrafu pokrývajících množ grafu. Pak
+	\[ \Theta(G) \leq \sigma(G) \]
+	Protože $K_n \boxtimes K_m = K_{mn}$. Součin uplných je uplný graf, jiná možnost není (jsou tam všechny hrany).Takže
+	\[ \sigma(G^k) \leq \sigma^k(G) \Rightarrow \sqrt[k]{\sigma(G^k)} \leq \sigma(G) \Rightarrow \Theta(G) \leq \sigma(G) \]
+\end{observation}
+\begin{observation}
+	$G$ je perfektní graf $\Rightarrow \sigma(G) = \alpha(G)$. Pak
+	\[ \alpha(G) \leq \Theta(G) \leq \sigma(G) = \alpha(G) \]
+\end{observation}
+
+\begin{definition}
+	Lovascova ortonormální reprezentace grafu je zobrazeni $f:V \to \Real^d$ splňující:
+	\begin{itemize}
+		\item $|| f(u) || = \langle f(u), f(u) \rangle = 1 \forall u \in V$ a
+		\item $\langle f(a), f(b) \rangle = 0 \forall a \ne b \land ab \notin E(G)$.
+	\end{itemize}
+
+	Pak velikost reprezentace je:
+	\[ || f || = \inf_{c: ||c|| = 1} \max_{a \in V} \frac{1}{\langle c, f(a) \rangle^2} \]
+\end{definition}
+
+\begin{example}
+	Pro graf který nemá žádný vrchol potřebujeme systém vzájemné $\perp$ vektoru velikosti $V(G)$, neboli prostor dimenze $V(G)$.
+
+	Pro uplný graf stačí volit vektory stejného směru nebo dokonce stejné.
+\end{example}
+
+\begin{definition}
+	Lovascova dzeta funkce grafu $G$:
+	\[ \vartheta(G) = \inf_f || f || \]
+
+	Chceme pro nějakou reprezentace najít takový jednotkový vektor $c$, který minimalizuje hodnotu $\langle c, f(u) \rangle^2$.
+\end{definition}
+
+\begin{example}
+	Pro uplný graf zvolíme reprezentaci která se skládá ze stejných vektoru, $c$ vezmeme ve stejném směru.
+	Pak všechny skalární součiny jsou 1. Z toho
+	% todo jina funkce, předn 8 od 42:00
+	\[ \vartheta(K_n) \leq 1 \]
+\end{example}
+
+\begin{definition}
+	\emph{Rukojeť} reprezentace $f$ je vektor $c$ (jednotkový vektor), pro který $f$ nabývá minima.
+	Infimum v def velikosti ortonormální reprezentace se nabývá, protože $f = f(c)$ je spojitá a zdola omezena.
+
+	V definici stačí uvazovat omezenou dimenzi, např $d \leq |V(G)|$.
+
+	Infimum v def dzeta funkce se taky nabývá, protože $||f||$ je spojitá funkce $f$. Pak
+	\[ \vartheta(G) = \min_f \min_{c: ||c|| = 1} \max_{a \in V} \frac{1}{\langle c, f(a) \rangle^2} \]
+\end{definition}
+\begin{agreement}
+	Může se stát, ze rukojeť je vektor kolmý na nějaký z vektoru $f$. Pak $\vartheta(G) = \infty$.
+	Budeme se ale takovým rukojetím vyhýbat. Všechny vektory reprezentace leží v nadrovině, je jich konečně mnoho.
+\end{agreement}
+
+\begin{lemma}
+	$\forall G : \alpha(G) \leq \vartheta(G)$.
+\end{lemma}
+\begin{proof}
+	Nechť $G$ je graf, a máme optimální reprezentace $f$ s rukojeti $c$. $|| f || = \vartheta(G)$.
+	Taky $W \subseteq V(G)$ je nezávislá množina:
+	\[ \alpha(G) = |W| \]
+
+	Vektory reprezentující $W$ jsou na sebe kolmé. Můžeme je doplnit na ortonormální báze $B$ prostoru $\Real^d$.
+	Pak rukojeť můžeme napsat jako lineární kombinace pomoci vektoru z $B$:
+	\[ c = \sum_{b \in B} \langle c, a \rangle \cdot b \]
+
+	Dal $c$ je jednotkový vektor:
+	\[ 1 = \langle c, c \rangle = \langle \sum_v \langle c,v \rangle, \sum_v \langle c,v \rangle \rangle = \sum_u \sum_v \langle c,u \rangle \langle c, v \rangle \langle u, v \rangle \]
+	vektory u, v jsou z ortonormální báze, takže pro $u \ne v$ je součet nula, jinak místo posledního skalárního součinu tam bude 1. Pak dostaneme součet vlevo, který je větší než suma pro vektory reprezentace nezávislé množiny.
+	\[ \sum_{b \in B} \langle c, b \rangle^2 \geq \sum_{u \in W} \langle c, f(u) \rangle^2 \]
+	Nahledneme že velikost skalárního součinu je omezena maximumem pro všechny vrcholy, což je právě $\vartheta(G)$.
+	\[ \forall a \in V(G): \frac{1}{\langle c, f(a) \rangle^2} \leq \vartheta(G) \Rightarrow \langle c, f(a) \rangle^2 \geq \frac{1}{\vartheta(G)} \]
+
+	\[ \sum_{u \in W} \langle c, f(u) \rangle^2 \geq \sum_{a \in W} \frac{1}{\vartheta(G)} \]
+	Sčítáme přes velikost nezávislé množiny, dostaneme $ \frac{\alpha(G)}{\vartheta(G)} $
+	Dohromady
+	\[ 1 = || c || \geq \frac{\alpha(G)}{\vartheta(G)} \Rightarrow \vartheta(G) \geq \alpha(G) \]
+\end{proof}
+
+\begin{lemma}
+	$\forall G, \forall H: \vartheta(G \boxtimes H) \leq \vartheta(G) \cdot \vartheta(H)$. Taky
+	\[ \forall G \forall k \in \N: \vartheta(G^k) \leq \vartheta^k(G) \]
+\end{lemma}
+\begin{proof}
+	Nechť $f$ je optimální ortonormální reprezentace $G$ s rukojeti $c$. Podobně $g$ pro $H$ s rukojeti $d$. Uvažme tenzorový součin $f \circ g$ jako ortonormální reprezentace součinu grafu.
+
+	\[ (u, v) \in V(G \boxtimes H), (f \circ g) (u, v) = (f(u) \circ g(v)) = (f(u)_i g(v)_j)_{i, j}, i = 1, 2, ..., n_1; j = 1,2, ..., n_2\]
+	Vezmeme $(u, v), (u', v'): (uu' \notin E(G) \land u \ne u') \lor (vv' \notin E(H) \land v \ne v') $. Pak
+
+	\[ \langle f(u) \circ g(v), f(u') \circ g(v') \rangle = \langle f(u), f(u') \rangle \cdot \langle g(v), g(v') \rangle \]
+	Pak bud jeden skalární součin je 0 nebo druhy z volby vrcholu. Takže
+	\[ \langle f(u), f(u') \rangle \cdot \langle g(v), g(v') \rangle = 0 \]
+
+	Pak rukojeť pro $G \boxtimes H$ bude $c \circ d$. Pak
+	\[ || f \circ g || \leq \max_{u, v} \frac{1}{\langle c \circ d, f(u) \circ g(v) \rangle^2} = \max \frac{1}{\langle c, f(u) \rangle^2 \cdot \langle d, g(v) \rangle^2} \]
+	Max je dvou funkci je menší než součin max dvou funkci:
+	\[ \max \frac{1}{\langle c, f(u) \rangle^2 \cdot \langle d, g(v) \rangle^2} \leq \max_u \frac{1}{\langle c, f(u) \rangle^2} \max_v \frac{1}{\langle d, g(v) \rangle^2} = \vartheta(G) * \vartheta(H) \]
+\end{proof}
+
+\begin{lemma}
+	$\forall G : \Theta(G) \leq \vartheta(G)$.
+\end{lemma}
+\begin{proof}
+	\[ \Theta(G) = \sup_k \sqrt[k]{\alpha(G^k)} \leq \sup_k \sqrt[k]{\vartheta(G^k)} \leq \sup_k \sqrt[k]{\vartheta^k(G)} = \vartheta(G) \]
+
+\end{proof}
+
+\begin{theorem}[Shannonova kapacita $C_5$]
+	$ \Theta(C_5) = \sqrt{5}$.
+\end{theorem}
+\begin{proof}
+	Víme $ \alpha(C_5^2) = 5 \Rightarrow \vartheta(C_5) \geq \sqrt{5} $. Ukážeme $\ \vartheta(C_5) \leq \sqrt{5}$. Z toho
+	\[ \sqrt{5} \leq \Theta(C_5) \leq \vartheta(C_5) \leq \sqrt{5} \]
+	Odkud platí i rovnost.
+
+	Pro důkaz stačí uvážit ortonormální reprezentaci $C_5$ která se jmenuje Lovascovuv deštník.
+\end{proof}
+
