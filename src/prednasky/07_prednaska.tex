@@ -3,7 +3,7 @@
 \large
 
 \begin{theorem}[Propletani A]\label{sp_cross_a}
-	Nechť $A \in \Comp^{n \times n}$ Hermitovská. $S \in \Comp^{m \times n}$ taková, ze $S^{\ast}S = I$.
+	Nechť $A \in \Comp^{n \times n}$ Hermitovská. $S \in \Comp^{m \times n}$ taková, že $S^{\ast}S = I$.
 	Potom vlastní čísla $S^{\ast}AS$ propletáji vlastní čísla matice A.
 \end{theorem}
 \begin{proof}
@@ -40,20 +40,20 @@
 \end{theorem}
 \begin{proof}
 	Vezmeme matici $P \in \{0, 1\}^{m \times n}$. Bude rozdělená do bloku velikosti $n_i, i = 1,2,...,n_m$.
-	V každém řádku 1ky jsou v bloku i, jinak nuly.
+	V každém řádku 1ky jsou v bloku $i$, jinak nuly.
 
 	\includegraphics[scale=0.6]{sp_2.eps}
 
 	Potom $PP^T$ je diagonální matice $D$ protože jedničky jsou na různých pozicích. Skalární součin dvou různých řádku je 0.
 	Na diagonále je norma i-ho řádku $= n_i$.
 
-	Použijeme matici $P$ abychom dostali řádkové součty matici A:\\
-	V matici PA dostaneme sloupcový součet po blocích. Pak v matici $PAP^T$ dostaneme součty všech prvku v blocích.
+	Použijeme matici $P$ abychom dostali řádkové součty matici $A$:\\
+	V matici $PA$ dostaneme sloupcový součet po blocích. Pak v matici $PAP^T$ dostaneme součty všech prvku v blocích.
 
 	Pro rovnost s matici $B$ ještě potřebujeme vydělit $n_i$. Na což použijeme $D^{-1}$ která má na diagonále $\frac{1}{n_i}$.
 	\[ B = D^{-1}PAP^T \]
 
-	Nechť $S = D^{-1/2}P$. S je reálná matice, pro niž platí
+	Nechť $S = D^{-1/2}P. S$ je reálná matice, pro niž platí
 	\[ SS^T = D^{-1/2}PP^T(D^{-1/2})^T = D^{-1/2}DD^{-1/2} = E \]
 
 	Dle Vety o propletani A \cref{sp_cross_a}, vlastní čísla $SAS^T$ propletaji vlastní čísla A.
@@ -89,7 +89,7 @@
 	Kde $(\Lambda_K)_{1,1} = d - \lambda_n$, jinak 0. Z toho $\Lambda_C$ má na diagonále $\{ \lambda_n, \lambda_2,..., \lambda_n \}$.
 	Odtud $\lambda_n$ je největší vlastní číslo matice $C$.
 
-	Nechť $W \subseteq V(G)$ je nezávislá množina $G$, $|W| = \alpha(G)$. Pak matice A, po seskupeni řádku odpovídajících $W$, má nulovou hlavni podmatice odpovídající $W$.
+	Nechť $W \subseteq V(G)$ je nezávislá množina $G$, $|W| = \alpha(G)$. Pak matice $A$, po seskupeni řádku odpovídajících $W$, má nulovou hlavni podmatice odpovídající $W$.
 	Z toho matice $C$ má na těchto pozicích $-\frac{1}{n}(d - \lambda_n)$. Taky je to hlavni podmatice.
 
 	\includegraphics[scale=0.5]{sp_1.eps}
@@ -100,14 +100,14 @@
 	\[ \alpha(G) * -\frac{1}{n}(d - \lambda_n) \geq \lambda_n \Rightarrow \alpha(G) \leq n \frac{-\lambda_n}{d - \lambda_n} \]
 \end{proof}
 
-\begin{consequence}
+\begin{consequence}\label{coloring_1}
 	Nechť $G$ je d-regulární graf o $n$ vrcholech s vlastní čísly $\lambda_1 \geq \lambda_2 \geq ... \geq \lambda_n \}$. Pak
 	\[ \chi(G) \geq 1 + \frac{\lambda_1}{|\lambda_n|} \]
 
-	Plyne z toho, ze $ \chi(G) \geq \frac{n}{\alpha(G)}$. Barveni grafu je rozložení ne $\chi(G)$ nezávislých množin. Kazda z nich má velikost $\chi(G)/\alpha(G)$. Kombinaci dvou nerovnosti dostaneme tvrzeni.
+	Plyne z toho, že $ \chi(G) \geq \frac{n}{\alpha(G)}$. Barveni grafu je rozložení na $\chi(G)$ nezávislých množin. Kazda z nich má velikost $\chi(G)/\alpha(G)$. Kombinaci dvou nerovnosti dostaneme tvrzení.
 \end{consequence}
 
-\begin{theorem}[Polomer spektra grafu]\label{sp_polomer}
+\begin{theorem}[Poloměr spektra grafu]\label{sp_polomer}
 	Nechť $G$ je graf o $n$ vrcholech s vlastní čísly $\lambda_1 \geq \lambda_2 \geq ... \geq \lambda_n \}$. Pak
 	\[ \Delta(G) \geq \lambda_1 \geq deg_{avg}(G) \]
 
@@ -117,7 +117,7 @@
 	1) Nerovnost $\Delta(G) \geq \lambda_1$. Doplníme $G$ na $\Delta$-regulární graf $H$ tak, aby $G$ byl jeho indukovaný podgraf. Pak vlastní čísla $G$ propletaji vlastní čísla $H$. $\lambda_{max}(H) = \Delta \Rightarrow \Delta(G) \geq \lambda_1$.
 
 	2) Nerovnost $\lambda_1 \geq deg_{avg}(G)$.
-	Vezmeme matice sousednosti A, představíme ji jako matici s 1 blokem. Pak matice průměrných řádkových součtu je $B = deg_{avg}(G)$ jednoprvková.
+	Vezmeme matice sousednosti $A$, představíme ji jako matici s 1 blokem. Pak matice průměrných řádkových součtu je $B = deg_{avg}(G)$ jednoprvková.
 
 	Dle Vety o propletaní B \cref{sp_cross_b}, $Sp(B) = \{ deg_{avg}(G)\}$ propleta spektrum A $\Rightarrow \lambda_1 \geq deg_{avg}(G)$.
 \end{proof}
@@ -138,7 +138,7 @@
 	\[ \alpha(G) \leq n \frac{-\lambda_1\lambda_n}{\sigma^2(G) - \lambda_1\lambda_n} \]
 \end{theorem}
 \begin{proof}
-	Nechť $W \subseteq V(G)$ je nezávislá množina $G$, $|W| = \alpha(G)$. Rozdělíme matice A dle W a $V\setminus W$.
+	Nechť $W \subseteq V(G)$ je nezávislá množina $G$, $|W| = \alpha(G)$. Rozdělíme matice $A$ dle $W$ a $V\setminus W$.
 
 	\includegraphics[scale=0.5]{sp_3.eps}
 
@@ -173,7 +173,7 @@
 \begin{theorem}[Barevnost souvislého grafu]
 	Nechť $G$ je souvislý graf o $n$ vrcholech s vlastnímu čísly $\lambda_1 \geq \lambda_2 \geq ... \geq \lambda_n \}$. Pak
 	\[ \chi(G) \geq 1 + \frac{\lambda_1}{|\lambda_n|} \]
-	Veta je analogická důsledku vety 1, zesiluje ji pro souvisle grafy.
+	Veta je analogická důsledku vety 1 \cref{coloring_1}, zesiluje ji pro souvisle grafy.
 \end{theorem}
 \begin{proof}
 	Obarvíme graf pomoci $\chi$ barev. Nechť $x$ je reálný vlastní vektor příslušný vlastnímu číslu $\lambda_1$ (Existuje dle Frobeniove vety).

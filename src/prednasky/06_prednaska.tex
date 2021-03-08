@@ -3,7 +3,7 @@
 \large
 
 \begin{definition}
-	Silně regulární je graf pokud není uplný (triviální případ) a $\exists d,e,f \in \N: \forall v \in V \ deg(v) = d$.
+	Silně regulární je graf pokud není úplný (triviální případ) a $\exists d,e,f \in \N: \forall v \in V \ deg(v) = d$.
 	Každé 2 sousední vrcholy mají $e$ společných sousedu (2 vrcholy leží v $e \triangle$), každé 2 nesousední vrcholy mají $f$ společných sousedu ($\exists f$ cest délky 2).
 \end{definition}
 
@@ -24,7 +24,7 @@
 	Dosadíme vlastní číslo $\lambda \in Sp(A)$.
 	\[ \lambda^2 + (f - e)\lambda + (f - d) \in Sp(fJ) = \{ f * n, 0^{(n-1)} \} \]
 
-	$d$ odpovídá vlastnímu vektoru $\bar{1}$ u A, u J vlastnímu vektoru $\bar{1}$ odpovídá $n$. Dosadíme $d$:
+	$d$ odpovídá vlastnímu vektoru $\bar{1}$ u $A$, u $J$ vlastnímu vektoru $\bar{1}$ odpovídá $n$. Dosadíme $d$:
 	\[ d^2 + (f - e)d + f - d = fn \Rightarrow d(d - e - 1) = f(n - d - 1)\]
 
 	Zafixujme nějaký vrchol $x \in V$. Kolik $\exists$ indukovaných cest délky 2:
@@ -50,7 +50,7 @@
 	Dosadíme hodnoty $\lambda_1, \lambda_2$ do 2. rovnice:
 	\[ d + 1/2 p (e - d + s) + 1/2 q (e - f - s) = 0 \Rightarrow d + 1/2(p + q) (e - f) + 1/2 (p - q) s = 0 \]
 
-	Nastávaji 2 případy:\\
+	Nastávají 2 případy:\\
 	1) $s \notin \Q \Rightarrow$ poslední sčítanec je iracionální a nutně $ p = q = 1/2 (n - 1)$.
 	\[ d + 1/2 (n-1) (e - f) = 0 \Rightarrow \frac{2d}{n - 1} = (f - e) \]
 	Pak stupeň vrcholu $ d \leq (n - 1)$
@@ -146,7 +146,7 @@
 	\end{equation*}
 	Dosadíme
 	\[ p = \frac{t^2 + 1}{4t}((t^2 * 2t) - 2) = \frac{(t^2 + 1)(t^3 - 1)}{2t} \notin N : t > 1 \]
-	Případ $t = 1 \Rightarrow m = 1$ není zajímavý protože KPR radu 1 je $\triangle$.
+	Případ $t = 1 \Rightarrow m = 1$ není zajímavý protože KPR řádu 1 je $\triangle$.
 
 	2) 3. axiom neplatí $\Rightarrow \{N_G\}$ z teorie KPR bud všechno leží na 1 přímce nebo jeden vrchol samostatně a zbytek na přímce. Pak ten samostatný vrchol je hledaný soused všech:
 	\[ \exists a : N_G(a) = V(G)\setminus \{a\} \]
@@ -161,14 +161,14 @@
 
 \begin{theorem}[Propletani vl cisel]
 	Nechť $A \in \Comp^{n \times n}$ je Hermitovska, $\lambda_1 \geq \lambda_2 \geq ... \geq \lambda_n$ její vlastní čísla.
-	Nechť $B$ je hlavni podmatice radu $k \times k$ (vznikne vynecháním $(n - k)$ řádky),
+	Nechť $B$ je hlavni podmatice řádu $k \times k$ (vznikne vynecháním $(n - k)$ řádky),
 	Nechť $b_1, b_2, ..., b_n \in \Comp^n$ jsou vlastní čísla matice $B$. Pak platí
 	\[ \lambda_i \geq b_i \geq \lambda_{i + n - k} \]
 \end{theorem}
 \begin{proof}
 	Nejprve se podíváme na případ vynechaní i-ho řádku.
 	Nechť $B$ má ortonormální báze $y_1, y_2, ..., y_{n-1} \in \Comp^{n - 1}$.
-	Vnoříme tyto vektory do $\Comp^n$ tak, ze na pozici $i - 1$ vložíme 0.
+	Vnoříme tyto vektory do $\Comp^n$ tak, že na pozici $i - 1$ vložíme 0.
 	Označíme je $z(y)$.
 	Pak
 	\[ z^{\ast}(y)Az(y) = y^{\ast}By \]
@@ -205,7 +205,7 @@
 		\lambda_j l^{\ast}l \geq b_j l^{\ast}l\ \Rightarrow \lambda_{j + 1} \leq b_j
 	\end{gather*}
 
-	Teď pro obecně k.
+	Teď pro obecné k.
 
 	\includegraphics[scale=0.5]{eigen_prop.eps}
 

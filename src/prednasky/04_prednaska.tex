@@ -40,7 +40,7 @@ Matice duálního homomorf vzhledem k duálním bázím je transponovanou matici
 \end{proof}
 
 \begin{definition}
-Faktorprostor: faktorizace dle podprostoru W prostoru V (podgrupa). $V/W$ jsou množiny $\forall u \in V u + W$. Pak i faktorprostor je V.P vůči operacím:
+Faktorprostor: faktorizace dle podprostoru $W$ prostoru V (podgrupa). $V/W$ jsou množiny $\forall u \in V u + W$. Pak i faktorprostor je V.P vůči operacím:
 \[ (u + W) + (a + W) = (u + a)W, \lambda \cdot (u + W) = (\lambda \cdot u) + W \]
 Platí: $dim(V/W) = dimV - dim W$.
 \end{definition}
@@ -52,14 +52,14 @@ Platí: $dim(V/W) = dimV - dim W$.
 \begin{proof}
 	\includegraphics[scale=0.4]{dual_2.eps}
 
-	Pak izomorfizm $\phi$ je definován:
+	Pak izomorfizmus $\phi$ je definován:
 	\[\phi(v + W^{\perp}) = \langle v, \cdot \rangle \]
 	Udělali jsme lineární formu z bilineární??
 
 	Pokud dosadíme proměnnou:
 	\[\forall x \in W: \phi(v + W^{\perp})(x) = \langle v, x \rangle \]
 
-	Chceme aby $\phi$ bylo korektně definované a splňovalo vlastnosti izomorfuzmu:
+	Chceme aby $\phi$ bylo korektně definované a splňovalo vlastnosti izomorfizmu:
 
 	1) korektnost definice \\
 	2) lineární zobrazeni \\
@@ -104,7 +104,7 @@ $\varphi$ je bijekce, takže prosté $\Rightarrow gm = m$. Dohromady \# $hn = n$
 \end{proof}
 
 \begin{definition}
-Seiduv switching vymění všechny hrany a nehrany výcházející z $u \in V$. Ostatní vrcholy a hrany beze změn. Grafy $G \sim G' \iff G'$ lze získat z $G$ postupným přepinaním vrcholu.
+Seiduv switching vymění všechny hrany a nehrany výcházející z $u \in V$. Ostatní vrcholy a hrany beze změn. Grafy $G \sim G' \iff G'$ lze získat z $G$ postupným přepínáním vrcholu.
 \end{definition}
 
 \begin{note}
@@ -138,7 +138,7 @@ Pro lichá $n$, označme
 
 	Takže kazdy graf lze přeswitchovat na Eulerovský graf. Přeswitcheni Eulerovského grafu se změní na neeulerovský. V každém switching třídě je 1 Eulerovský graf.
 
-	Pro $n$ sude. Nechť $\nu$. je V.P. všech grafu na dáne množině vrcholu, $B$ je prostor elementárních řezu na uplném grafu, $\xi$ prostor Eulerovských grafu.
+	Pro $n$ sude. Nechť $\nu$. je V.P. všech grafu na dáne množině vrcholu, $B$ je prostor elementárních řezu na úplném grafu, $\xi$ prostor Eulerovských grafu.
 	\[ \beta = \xi^{\perp} \Rightarrow \xi^{\ast} \simeq \nu/B \]
 
 	Prvky $\nu/B$ jsou právě třídy ekvivalence dle Seidelovem switchingu. Chceme zjistit počet orbit akci grupy $S(V)$.
@@ -146,11 +146,11 @@ Pro lichá $n$, označme
 	\includegraphics[scale=0.4]{seide_1.eps}
 	\includegraphics[scale=0.4]{seide_2.eps}
 
-	Tvrdíme ze diagram komutuje. Nechť $G \in \nu$
+	Tvrdíme že diagram komutuje. Nechť $G \in \nu$
 	\[ \bar{\sigma}_B(G + B) \to \sigma(G) + B, \phi(\sigma(G) + B) \to \langle \bar{\sigma}(G), \cdot \rangle \in \xi^{\ast} \]
 	\[ \phi(G + B) \to \langle G, \cdot \rangle \in \xi^{\ast}, (\bar{\sigma}^{-1})^{\ast}(\langle G, \cdot \rangle) \]
 
-	Tvrdíme ze poslední prvky ve dvou řádcích jsou stejné.
+	Tvrdíme že poslední prvky ve dvou řádcích jsou stejné.
 	\[ \forall X \in \xi: \langle \bar{\sigma}(G)(X) \rangle = (\bar{\sigma}^{-1})^{\ast}(\langle G, \cdot \rangle) = \langle G, (\bar{\sigma}^{-1})(G) \rangle \]
 	Levá část
 	\[ \langle \bar{\sigma}(G)(X) \rangle = |\{ e | e \in E(\bar{\sigma} \cap E(X) \} \]
